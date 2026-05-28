@@ -139,13 +139,11 @@ We make the following distinction for code that supports our content:
 - Samples: readers can download and run the samples. All samples should be complete applications or libraries. Where the sample creates a library, it should include unit tests or an application that lets readers run the code. They often use more than one technology, feature, or toolkit. The readme.md file for each sample will refer to the article so that you can read more about the concepts covered in each sample.
 - Snippets: illustrate a smaller concept or task. They compile but they are not intended to be complete applications. They should run correctly, but aren't an example application for a typical scenario. Instead, they are designed to be as small as possible to illustrate a single concept or feature. These should be no more than a single screen of code.
 
-Samples are stored in the [dotnet/samples](https://github.com/dotnet/samples) repository. We are working toward a model where our samples folder structure matches our docs folder structure. Standards that we follow are:
+Samples are stored in the [dotnet/samples](https://github.com/dotnet/samples) repository. Top-level folders match the top level folders in the *docs* repository. For example, the docs repository has a *machine-learning/tutorials* folder, and the samples for machine learning tutorials are in the *samples/machine-learning/tutorials* folder.
 
-- Top-level folders match the top level folders in the *docs* repository. For example, the docs repository has a *machine-learning/tutorials* folder, and the samples for machine learning tutorials are in the *samples/machine-learning/tutorials* folder.
+In addition, all samples under the *core* and *standard* folders should build and run on all platforms supported by .NET. Our CI build system will enforce that. The top level *framework* folder contains samples that are only built and validated on Windows.
 
-In addition, all samples under the *core* and *standard* folders should build and run on all platforms supported by .NET Core. Our CI build system will enforce that. The top level *framework* folder contains samples that are only built and validated on Windows.
-
-Sample projects should build and run on the widest set of platforms possible for the given sample. In practice, that means building .NET Core-based console applications where possible. Samples that are specific to the web or a UI framework should add those tools as needed. Examples include web applications, mobile apps, WPF or WinForms apps, and so on.
+Sample projects should build and run on the widest set of platforms possible for the given sample. In practice, that means building .NET-based console applications where possible. Samples that are specific to the web or a UI framework should add those tools as needed. Examples include web applications, mobile apps, WPF or WinForms apps, and so on.
 
 We are working toward having a CI system in place for all code. When you make any updates to samples, make sure each update is part of a buildable project. Ideally, add tests for correctness on samples as well.
 
@@ -157,7 +155,7 @@ Your topic will also contain links to the sample. Link directly to the sample's 
 
 Samples are full programs and libraries meant for download. They may be small in scope, but they demonstrate concepts in a manner that enables people to explore and experiment on their own. The guidelines for samples ensure readers can download and explore. Examine the [Parallel LINQ (PLINQ)](https://github.com/dotnet/samples/tree/main/csharp/parallel/PLINQ) samples as an example of each of the guidelines.
 
-1. Your sample **must be part of a buildable project**. Where possible, the projects should build on all platforms supported by .NET Core. Exceptions to this are samples that demonstrate a platform specific feature or platform specific tool.
+1. Your sample **must be part of a buildable project**. Where possible, the projects should build on all platforms supported by .NET. Exceptions to this are samples that demonstrate a platform specific feature or platform specific tool.
 
 2. Your sample should conform to the [runtime coding style](https://github.com/dotnet/runtime/blob/main/docs/coding-guidelines/coding-style.md) to maintain consistency.
 
@@ -185,7 +183,7 @@ To create a sample:
     }
     ```
 
-You build any .NET snippet or sample using the .NET CLI, which can be installed with [the .NET SDK](https://www.microsoft.com/net/download). To build and run your sample:
+You can build any .NET snippet or sample using the .NET CLI, which is installed with [the .NET SDK](https://www.microsoft.com/net/download). To build and run your sample:
 
 1. Go to the sample folder and build to check for errors:
 
@@ -213,10 +211,7 @@ You build any .NET snippet or sample using the .NET CLI, which can be installed 
      - fsharp
      - vbnet
    products:
-     - dotnet-core
      - dotnet
-     - dotnet-standard
-     - aspnet
      - aspnet-core
      - ef-core
    ---
@@ -225,7 +220,7 @@ You build any .NET snippet or sample using the .NET CLI, which can be installed 
    - The `languages` collection should include only those languages available for your sample.
    - The `products` collection should include only those products relevant to your sample.
 
-Except where noted, all samples build from the command line on any platform supported by .NET. There are a few samples that are specific to Visual Studio and require Visual Studio 2017 or later. In addition, some samples show platform specific features and will require a specific platform. Other samples and snippets require the .NET Framework and will run on Windows platforms, and will need the Developer Pack for the target Framework version.
+Except where noted, all samples build from the command line on any platform supported by .NET. There are a few samples that are specific to Visual Studio. In addition, some samples show platform specific features and will require a specific platform. Other samples and snippets require the .NET Framework and will run on Windows platforms, and will need the Developer Pack for the target Framework version.
 
 ## The C# interactive experience
 
